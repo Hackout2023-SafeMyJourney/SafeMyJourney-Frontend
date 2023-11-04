@@ -1,0 +1,41 @@
+.reg-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: azure;
+}
+
+.reg-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    border: 1px solid grey;
+    padding: 10px;
+    width: 50%;
+}
+
+.reg-change-role{
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+.reg-label{
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px;
+}
+
+hr {
+    width: 100%;
+    border: 1 solid black;
+    border-radius: 5px;
+  }
