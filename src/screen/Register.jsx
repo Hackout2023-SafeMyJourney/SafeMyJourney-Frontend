@@ -3,8 +3,11 @@ import '../assets/css/register.css';
 import {BiShow,BiHide} from "react-icons/bi"
 import { toast } from "react-hot-toast";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate=useNavigate();
+
     const [data,setData]=useState({
         name: "",
         mobile: "",
@@ -45,6 +48,7 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         toast.success("success submit");
+        navigate("/login");
     }
 
     return (
