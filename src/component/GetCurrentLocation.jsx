@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react-18-support";
 
 const GoogleMapComponent = (props) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -41,5 +41,5 @@ const GoogleMapComponent = (props) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: "YOUR_API_KEY_HERE",
+  apiKey: `${process.env.REACT_APP_MAPS_KEY}`,
 })(GoogleMapComponent);

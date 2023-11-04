@@ -4,9 +4,11 @@ import {BiShow,BiHide} from "react-icons/bi"
 import { Link } from 'react-router-dom';
 import "../assets/css/login.css";
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie"
 
 const Login = () => {
     const navigate=useNavigate();
+    const [, setCookies] = useCookies(["token"]);
 
     const [data,setData]=useState({
         emailid: "",
@@ -47,9 +49,12 @@ const Login = () => {
             body:JSON.stringify(finalData)
         });
 
+        const dataRes = await fetchData.json();
         if(fetchData.status === 200)
         {
             toast.success("Login Successfull...");
+            setCookies("token", dataRes.token, {maxAge: 60 * 60});
+            setCookies("user", "passenger", {maxAge: 60 * 60});
             navigate("/passenger");
         }
         else
@@ -71,9 +76,12 @@ const Login = () => {
             body:JSON.stringify(finalData)
         });
         
+        const dataRes = await fetchData.json();
         if(fetchData.status === 200)
         {
             toast.success("Login Successfull...");
+            setCookies("token", dataRes.token, {maxAge: 60 * 60});
+            setCookies("user", "driver", {maxAge: 60 * 60});
             navigate("/driver");
         }
         else
