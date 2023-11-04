@@ -1,0 +1,40 @@
+.qr-main{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-form{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-box{
+    min-width: 280px;
+    width: 80%;
+    max-width: 460px;
+    height: fit-content;
+    border: 1px solid grey;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.qr-label{
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    margin: 15px;
+}
+
+.qr-fillform{
+    width: 80%;
+    min-width: 280px;
+    max-width: 460px;
+}
