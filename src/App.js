@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// import './assets/css/App.css';
+import Header from './component/Header'
+import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Toaster />
+			<div>
+				<Header />
+				<main className='pt-16 bg-slate-100 min-h-[calc(100vh)]'>
+				<Outlet />
+				</main>
+			</div>
+		</>
+	);
 }
 
 export default App;
