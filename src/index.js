@@ -8,7 +8,7 @@ import Login from "./screen/Login";
 import Logout from "./component/Logout";
 import Register from "./screen/Register";
 import { FillInfo as DriverFillInfo } from "./screen/Driver/FillInfo";
-import { FillInfo as PassengerFillInfo } from "./screen/passenger/FillInfo";
+// import { FillInfo as PassengerFillInfo } from "./screen/passenger/FillInfo";
 import ScanQR from "./screen/passenger/ScanQR";
 import LiveStatus from "./screen/LiveStatus";
 
@@ -29,7 +29,7 @@ const router = createBrowserRouter(
 
       <Route path="/passenger">
         <Route index element={<ScanQR />} />
-        <Route path="fillinfo" element={<PassengerFillInfo />} />
+        <Route path="fillinfo" element={<LiveStatus />} />
       </Route>
 
       <Route path="/driver">
