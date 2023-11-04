@@ -14,7 +14,6 @@ const Header = () => {
     }
     return (
         <header className='fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white'>
-            
             <div className='flex items-center h-full justify-between'>
                 <Link to={""}>
                 <div className='h-10'>
@@ -34,19 +33,14 @@ const Header = () => {
                                     <Link to={"logout"} className="Whitespace-nowrap cursor-pointer">Logout</Link>
                                 </>
                                 : <>
-                                    <Link to={"admin/login"} className="whitespace-nowrap cursor-pointer">Admin Login</Link>
                                     <Link to={"login"} className="Whitespace-nowrap cursor-pointer">Login</Link>
                                 </>
                             }
                         </div>
                         )}
-                        
                     </div>
                 </div>
             </div>
-
-
-            {/* mobile */}
         </header>
     )
 }
