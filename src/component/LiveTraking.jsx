@@ -183,52 +183,85 @@ class LiveTraking extends Component {
     } = this.state;
 
     return (
-      <div style={{ width: "100%", height: "100vh" }}>
-        <div>
-          <input
-            type="text"
-            value={source}
-            onChange={this.handleAutoComplete("source")}
-            placeholder="Source Address"
-          />
-          <button onClick={this.useCurrentLocation}>
-            Use Current Location
-          </button>
-          <ul>
-            {sourcePredictions &&
-              sourcePredictions.map((prediction) => (
-                <li
-                  key={prediction.place_id}
-                  onClick={() => this.selectPrediction("source", prediction)}
-                >
-                  {prediction.description}
-                </li>
-              ))}
-          </ul>
+      <div style={{ width: "100%", height: "100%"}}>
+        <div className="flex flex-col p-5 items-center">
+          <div>
+            <div className="flex flex-row">
+              <input
+                type="text"
+                value={source}
+                onChange={this.handleAutoComplete("source")}
+                style={{
+                  borderRadius: "15px",
+                  border: "1px solid black",
+                  padding: "5px",
+                  width: "70vw"
+                }}
+                placeholder="Source Address"
+              />
+              <button onClick={this.useCurrentLocation}
+                style={{
+                  borderRadius: "15px",
+                  border: "1px solid black",
+                  padding: "5px",
+                  width: "20vw",
+                }}>
+                Current Location
+              </button>
+            </div>
+            <ul style={{
+                  width: "100%"
+            }}>
+              {sourcePredictions &&
+                sourcePredictions.map((prediction) => (
+                  <li
+                    key={prediction.place_id}
+                    onClick={() => this.selectPrediction("source", prediction)}
+                  >
+                    {prediction.description}
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <div className="flex flex-row">
+            <input
+              type="text"
+              value={destination}
+              onChange={this.handleAutoComplete("destination")}
+              style={{
+                borderRadius: "15px",
+                border: "1px solid black",
+                padding: "5px",
+                width: "90vw",
+                height: "50px",
+              }}
+              placeholder="Destination Address"
+            />
+            <ul>
+              {destinationPredictions &&
+                destinationPredictions.map((prediction) => (
+                  <li
+                    key={prediction.place_id}
+                    onClick={() =>
+                      this.selectPrediction("destination", prediction)
+                    }
+                  >
+                    {prediction.description}
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <button onClick={this.handleGetDirections} 
+            style={{
+              borderRadius: "15px",
+              border: "1px solid black",
+              padding: "5px",
+              width: "30vw",
+              height: "50px",
+            }}>
+              Get Directions
+            </button>
         </div>
-        <div>
-          <input
-            type="text"
-            value={destination}
-            onChange={this.handleAutoComplete("destination")}
-            placeholder="Destination Address"
-          />
-          <ul>
-            {destinationPredictions &&
-              destinationPredictions.map((prediction) => (
-                <li
-                  key={prediction.place_id}
-                  onClick={() =>
-                    this.selectPrediction("destination", prediction)
-                  }
-                >
-                  {prediction.description}
-                </li>
-              ))}
-          </ul>
-        </div>
-        <button onClick={this.handleGetDirections}>Get Directions</button>
-
         <Map
           google={this.props.google}
           zoom={10}
