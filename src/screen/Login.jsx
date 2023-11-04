@@ -77,6 +77,7 @@ const Login = () => {
         });
         
         const dataRes = await fetchData.json();
+        console.log(dataRes);
         if(fetchData.status === 200)
         {
             toast.success("Login Successfull...");

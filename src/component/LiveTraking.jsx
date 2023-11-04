@@ -223,7 +223,7 @@ class LiveTraking extends Component {
                 ))}
             </ul>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-col">
             <input
               type="text"
               value={destination}
