@@ -15,9 +15,11 @@ const Register = () => {
         gender: "",
         nomini_name: "",
         nomini_mobile: "",
-        emailid: "",
+        email: "",
         password: "",
         confirmPassword: "",
+        cabNo: "",
+        aadhaarNo: "",
     });
 
     const [userRole, setUserRole] = useState(false);
@@ -44,11 +46,71 @@ const Register = () => {
             }
         })
     }
+    
+    const registerPassenger = async () => {
+        const finalData = {
+            ...data,
+            nomini: data.nomini_name,
+            nominiMobile: data.nomini_mobile,
+        } 
+        console.log(finalData);
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/passanger/register`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(finalData)
+        });
 
-    const handleSubmit = (e) => {
+        if(fetchData.status === 200)
+        {
+            toast.success("Registration Successfull...");
+            navigate("/login");
+        }
+        else
+        {
+            toast.error("Registration Failed...");
+        }
+    }
+
+    const registerDriver = async () => {
+        const finalData = {
+            ...data,
+            aadhar_no: data.aadhaarNo,
+            cab_no: data.cabNo,
+        }
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/driver/register`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(finalData)
+        });
+        const dataRes = await fetchData.json();
+        console.log(dataRes);
+
+        if(fetchData.status === 200)
+        {
+            toast.success("Registration Successfull...");
+            navigate("/login");
+        }
+        else
+        {
+            toast.error("Registration Failed...");
+        }
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        toast.success("success submit");
-        navigate("/login");
+        
+        if(!userRole)
+        {
+            registerPassenger();
+        }
+        else
+        {
+            registerDriver();
+        }
     }
 
     return (
@@ -100,16 +162,16 @@ const Register = () => {
 
                     <label htmlFor='gender'>Gender:</label>
                     <div className='flex items-center justify-around'>
-                        <label for="male">Male</label>
-                        <input type="radio" id="male" name="gender" value="Male" />
-                        <label for="female">Female</label>
-                        <input type="radio" id="female" name="gender" value="Female" />
-                        <label for="other">Other</label>
-                        <input type="radio" id="other" name="gender" value="Other" />
+                        <label htmlFor="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="Male" onClick={handleOnChange}/>
+                        <label htmlFor="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="Female" onClick={handleOnChange}/>
+                        <label htmlFor="other">Other</label>
+                        <input type="radio" id="other" name="gender" value="Other" onClick={handleOnChange}/>
                     </div>
 
                     {
-                        userRole === false &&
+                        userRole === false ?
                             <>
                                 <label htmlFor='nomini_name'>Nominee Name</label>
                                 <input type='text' id='nomini_name' name='nomini_name' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.nomini_name} onChange={handleOnChange}/>
@@ -117,10 +179,19 @@ const Register = () => {
                                 <label htmlFor='nomini_mobile'>Nominee Mobile</label>
                                 <input type='text' id='nomini_mobile' name='nomini_mobile' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.nomini_mobile} onChange={handleOnChange}/>
                             </>
+                        :
+                            <>
+                                <label htmlFor='cabNo'>Cab No</label>
+                                <input type='text' id='cabNo' name='cabNo' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.cabNo} onChange={handleOnChange}/>
+
+                                <label htmlFor='aadhaarNo'>Aadhaar No</label>
+                                <input type='tel' id='aadhaarNo' name='aadhaarNo' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.aadhaarNo} onChange={handleOnChange}/>
+
+                            </>
                     }
 
                     <label htmlFor='email'>Email Address</label>
-                    <input type='email' id='email' name='emailid' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.emailid} onChange={handleOnChange}/>
+                    <input type='email' id='email' name='email' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.email} onChange={handleOnChange}/>
 
                     <label htmlFor='password'>Password</label>
                     <div className='flex px-2 py-1 bg-slate-200 rounded mt-1 mb-2 focus-within:outline focus-within:outline-blue-400'>                        

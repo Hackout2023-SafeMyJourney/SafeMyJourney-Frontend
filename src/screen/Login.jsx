@@ -34,16 +34,64 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        toast.success("success submit");
-        if(userRole === true)
+    const loginPassenger = async () => {
+        const finalData = {
+            id: data.emailid,
+            pass: data.password,
+        }
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/passanger/login`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(finalData)
+        });
+
+        if(fetchData.status === 200)
         {
+            toast.success("Login Successfull...");
+            navigate("/passenger");
+        }
+        else
+        {
+            toast.error("Login Failed...");
+        }
+    }
+
+    const loginDriver = async () => {
+        const finalData = {
+            id: data.emailid,
+            pass: data.password,
+        }
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/driver/login`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(finalData)
+        });
+        
+        if(fetchData.status === 200)
+        {
+            toast.success("Login Successfull...");
             navigate("/driver");
         }
         else
         {
-            navigate("/passenger");
+            toast.error("Login Failed...");
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+        if(userRole === true)
+        {
+            loginDriver();
+        }
+        else
+        {
+            loginPassenger();
         }
     }
 
