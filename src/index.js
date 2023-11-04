@@ -3,13 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from 'react-router-dom';
+import Home from './screen/Home';
+import Login from './screen/Login';
+import Logout from './component/Logout';
+import Register from './screen/Register';
+import {FillInfo as DriverFillInfo} from './screen/Driver/FillInfo';
+import {FillInfo as PassengerFillInfo} from './screen/passenger/FillInfo';
+import ScanQR from './screen/passenger/ScanQR';
 
+import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<App/>}>
-			
+			<Route index element={<Home/>} />
+			<Route path='login' element={<Login/>} />
+			<Route path='logout' element={<Logout/>} />
+			<Route path='register' element={<Register/>} />
+
+			<Route path='/passenger'>
+				<Route index element={<ScanQR/>} />
+				<Route path='fillinfo' element={<PassengerFillInfo/>} />
+			</Route>
+      
+			<Route path='/driver'>
+				<Route index element={<DriverFillInfo/>} />
+			</Route>
 		</Route>
 	) 
 )
