@@ -1,15 +1,13 @@
-.reg-main{
+.login-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    height: auto;
+    height: 90vh;
     background-color: azure;
 }
 
-.reg-box{
+.login-box{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +19,7 @@
     width: 50%;
 }
 
-.reg-change-role{
+.login-change-role{
     display: flex;
     width: 50%;
     justify-content: flex-end;
@@ -31,7 +29,7 @@
     text-decoration-color: red;
 }
 
-.reg-label{
+.login-label{
     font-size: larger;
     font-weight: bold;
     padding: 10px;
