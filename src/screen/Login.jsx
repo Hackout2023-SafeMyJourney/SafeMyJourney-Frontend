@@ -3,8 +3,11 @@ import toast from 'react-hot-toast';
 import {BiShow,BiHide} from "react-icons/bi"
 import { Link } from 'react-router-dom';
 import "../assets/css/login.css";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate=useNavigate();
+
     const [data,setData]=useState({
         emailid: "",
         password: "",
@@ -34,6 +37,14 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         toast.success("success submit");
+        if(userRole === true)
+        {
+            navigate("/driver");
+        }
+        else
+        {
+            navigate("/passenger");
+        }
     }
 
     return (

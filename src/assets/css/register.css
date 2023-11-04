@@ -6,7 +6,6 @@
     padding-top: 1vh;
     padding-bottom: 1vh;
     height: auto;
-    background-color: azure;
 }
 
 .reg-box{
@@ -16,19 +15,24 @@
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    border: 1px solid grey;
+    box-shadow: 0 0 10px rgb(169, 169, 169);
     padding: 10px;
     width: 50%;
+    min-width: 320px;
+    max-width: 460px;
 }
 
 .reg-change-role{
     display: flex;
     width: 50%;
+    min-width: 320px;
+    max-width: 460px;
     justify-content: flex-end;
     cursor: pointer;
     color: red;
     text-decoration: underline;
     text-decoration-color: red;
+    margin-bottom: 10px;
 }
 
 .reg-label{
