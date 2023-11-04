@@ -10,7 +10,7 @@ import Register from "./screen/Register";
 import { FillInfo as DriverFillInfo } from "./screen/Driver/FillInfo";
 import { FillInfo as PassengerFillInfo } from "./screen/passenger/FillInfo";
 import ScanQR from "./screen/passenger/ScanQR";
-import LiveTraking from "./component/LiveTraking";
+import LiveStatus from "./screen/LiveStatus";
 
 import {
   createBrowserRouter,
@@ -35,7 +35,7 @@ const router = createBrowserRouter(
       <Route path="/driver">
         <Route index element={<DriverFillInfo />} />
       </Route>
-      <Route path="location" element={<LiveTraking />} />
+      <Route path="/location" element={<LiveStatus />} />
     </Route>
   )
 );
