@@ -5,8 +5,8 @@ import {FaRegUserCircle} from "react-icons/fa";
 import { useCookies } from "react-cookie";
 
 const Header = () => {
-    const [cookies , , ] = useCookies(["access_token"]);
-    const isLoginned = cookies["access_token"] ? true : false;
+    const [cookies , , ] = useCookies(["token"]);
+    const isLoginned = cookies["token"] ? true : false;
 
     const[showMenu,setshowMenu] = useState(false);
     const handleShowMenu = ()=>{
