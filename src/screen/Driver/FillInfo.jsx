@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../assets/css/driverfillinfo.css';
 import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
