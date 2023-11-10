@@ -11,7 +11,6 @@ const ScanQR = () => {
     const [data, setData] = useState(false);
     const [verified, setVerfied] = useState(true);
     const [fillData, setFillData] = useState({
-        driverId: "",
         name: "",
         mobileNo: "",
         cabNo: "",
@@ -26,7 +25,6 @@ const ScanQR = () => {
         const newDriverId = data.substr(4, data.length - 4);
         
         const finalData = {
-            ...fillData,
             "driverId": newDriverId,
         }
         
@@ -38,14 +36,15 @@ const ScanQR = () => {
         setVerfied(prev => !prev);
     }
 
-    const handleSubmit = (finalData) => {
+    const handleSubmit = (data) => {
         toast.success("Submit success");
-        navigate("/passenger/fillinfo");
+        console.log(data);
+        navigate("/passenger/fillinfo", {state: data});
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        handleSubmit();
+        handleSubmit(fillData);
     }
 
     const handleOnChange = (e)=>{
@@ -75,7 +74,7 @@ const ScanQR = () => {
             setFillData((prev) => {
                 return {
                     ...prev,
-                    image : e.target.result
+                    photo : e.target.result
                 }
             });
         };

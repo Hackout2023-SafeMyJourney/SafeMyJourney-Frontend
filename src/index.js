@@ -10,7 +10,7 @@ import Register from "./screen/Register";
 import { FillInfo as DriverFillInfo } from "./screen/Driver/FillInfo";
 // import { FillInfo as PassengerFillInfo } from "./screen/passenger/FillInfo";
 import ScanQR from "./screen/passenger/ScanQR";
-import LiveStatus from "./screen/LiveStatus";
+import LiveStatus from "./screen/passenger/LiveStatus";
 
 import {
   createBrowserRouter,
