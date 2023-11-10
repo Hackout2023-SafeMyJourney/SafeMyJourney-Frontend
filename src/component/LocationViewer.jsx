@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
 	Map,
@@ -7,7 +7,7 @@ import {
 	Marker,
 } from "google-maps-react-18-support";
 
-const LiveTraking = (props) => {
+const LocationViewer = (props) => {
 	const [data, setData] = useState({
 		source: "",
 		destination: "",
@@ -171,16 +171,6 @@ const LiveTraking = (props) => {
 		);
 	};
 
-
-	// render() {
-	// 	const {
-	// 		source,
-	// 		destination,
-	// 		sourcePredictions,
-	// 		destinationPredictions,
-	// 		currentPosition,
-	// 	} = this.state;
-
 	return (
 		<div style={{ width: "100%", height: "100%" }}>
 			<div className="flex flex-col p-5 items-center">
@@ -306,4 +296,4 @@ const LiveTraking = (props) => {
 
 export default GoogleApiWrapper({
 	apiKey: `${process.env.REACT_APP_MAPS_KEY}`,
-})(LiveTraking);
+})(LocationViewer);
