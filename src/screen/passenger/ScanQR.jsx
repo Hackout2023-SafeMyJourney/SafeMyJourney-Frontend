@@ -38,7 +38,6 @@ const ScanQR = () => {
 
     const handleSubmit = (data) => {
         toast.success("Submit success");
-        console.log(data);
         navigate("/passenger/fillinfo", {state: data});
     }
 
